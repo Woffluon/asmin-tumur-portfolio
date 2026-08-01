@@ -1,0 +1,39 @@
+:root {
+  --bg-primary: rgb(196, 196, 176);
+  --bg-secondary: #babab0;
+  --bg-dark: #161614;
+  --text-dark: #1a1a1a;
+  --text-light: #f5f5f0;
+  --accent-muted: rgba(26, 26, 26, 0.6);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+
+  font-family: var(--font-sans);
+  color: var(--text-dark);
+  background-color: var(--bg-primary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

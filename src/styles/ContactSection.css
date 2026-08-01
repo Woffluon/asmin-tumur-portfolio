@@ -1,0 +1,214 @@
+.contact-section {
+  overflow: hidden;
+  padding: clamp(8rem, 15vw, 15rem) clamp(1.25rem, 5vw, 5.5rem) clamp(3rem, 7vw, 7rem);
+  background: #d6d3c5;
+  color: var(--ink);
+}
+
+.contact-section__inner {
+  max-width: 92rem;
+  margin: 0 auto;
+}
+
+.contact-availability {
+  margin: 0 0 clamp(4rem, 9vw, 8rem);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+}
+
+.contact-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(13rem, 0.45fr);
+  gap: 3rem;
+  align-items: flex-end;
+}
+
+.contact-main h2 {
+  max-width: min(100%, 73rem);
+  margin: 0;
+  font-size: clamp(3.45rem, 7.35vw, 8rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.82;
+}
+
+.contact-main p {
+  max-width: 18rem;
+  margin: 0 0 0.45rem;
+  color: rgba(23, 23, 20, 0.67);
+  font-size: 0.95rem;
+  letter-spacing: -0.015em;
+  line-height: 1.5;
+}
+
+.contact-email-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: clamp(5rem, 10vw, 10rem);
+  padding: 1.25rem 0 1.15rem;
+  border-top: 1px solid rgba(23, 23, 20, 0.34);
+  border-bottom: 1px solid rgba(23, 23, 20, 0.34);
+}
+
+.contact-email {
+  color: inherit;
+  font-size: clamp(1.65rem, 3.55vw, 4.1rem);
+  font-weight: 400;
+  letter-spacing: -0.075em;
+  line-height: 1;
+  text-decoration: none;
+  transition: opacity 400ms var(--ease-out);
+}
+
+.contact-email:hover {
+  opacity: 0.52;
+}
+
+.contact-email-row button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  min-height: 44px;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.82rem 1rem;
+  border: 1px solid var(--ink);
+  border-radius: 0.25rem;
+  color: var(--paper);
+  background: var(--ink);
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  transition: background-color 450ms var(--ease-out), color 450ms var(--ease-out), transform 450ms var(--ease-out);
+}
+
+.contact-email-row button:hover {
+  color: var(--ink);
+  background: transparent;
+  transform: translateY(-2px);
+}
+
+.contact-email-row button:active {
+  transform: scale(0.98);
+}
+
+.contact-channels {
+  display: grid;
+  margin-top: 1.25rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+.contact-channels > * {
+  display: flex;
+  min-height: 6.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  color: inherit;
+  font-size: 0.82rem;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.contact-channels a {
+  border-top: 1px solid rgba(23, 23, 20, 0.28);
+  transition: padding 450ms var(--ease-out);
+}
+
+.contact-channels a:hover {
+  padding-left: 0.65rem;
+}
+
+.contact-channels a span:last-child,
+.contact-location {
+  color: rgba(23, 23, 20, 0.64);
+}
+
+.contact-location {
+  justify-content: flex-end;
+  border-top: 1px solid rgba(23, 23, 20, 0.28);
+}
+
+.contact-footer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin-top: clamp(5rem, 9vw, 8rem);
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(23, 23, 20, 0.34);
+  color: rgba(23, 23, 20, 0.62);
+  font-size: 0.72rem;
+  letter-spacing: 0.015em;
+}
+
+.contact-footer nav {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.contact-footer a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: opacity 350ms var(--ease-out);
+}
+
+.contact-footer a:hover {
+  opacity: 0.55;
+}
+
+.contact-credit {
+  width: max-content;
+}
+
+.contact-footer > span:last-child {
+  justify-self: end;
+}
+
+@media (max-width: 800px) {
+  .contact-main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .contact-main h2 {
+    font-size: clamp(3.35rem, 14.5vw, 6.5rem);
+  }
+  .contact-email-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.4rem;
+  }
+  .contact-channels {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .contact-channels > * {
+    min-height: 4.9rem;
+  }
+  .contact-location {
+    justify-content: flex-start;
+  }
+  .contact-footer {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .contact-footer > span:last-child {
+    justify-self: start;
+  }
+  .contact-footer nav {
+    order: -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-email,
+  .contact-email-row button,
+  .contact-channels a,
+  .contact-footer a {
+    transition: none;
+  }
+}
