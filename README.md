@@ -47,8 +47,6 @@ asmin-tumur-portfolio/
 ├── public/
 │   ├── medias/           # Optimized responsive (.avif, .webp) assets & 3D models
 │   └── favicon/          # Platform-specific icons & manifest files
-├── scripts/
-│   └── optimize-images.js# Multi-resolution zero-loss image processing pipeline
 ├── src/
 │   ├── components/       # Hero, Navigation, Contact, and layout components
 │   ├── pages/            # Home, Gallery, and 404 views
