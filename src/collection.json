@@ -1,17 +1,17 @@
 [
   {
-    "id": 1,
-    "title": "Güneş & Kıyı",
-    "img": "/medias/1.webp",
-    "mobileImg": "/medias/1_mobile.webp",
-    "tabletImg": "/medias/1_tablet.webp"
-  },
-  {
     "id": 2,
     "title": "Kentsel Duruş",
     "img": "/medias/2.webp",
     "mobileImg": "/medias/2_mobile.webp",
     "tabletImg": "/medias/2_tablet.webp"
+  },
+  {
+    "id": 1,
+    "title": "Güneş & Kıyı",
+    "img": "/medias/1.webp",
+    "mobileImg": "/medias/1_mobile.webp",
+    "tabletImg": "/medias/1_tablet.webp"
   },
   {
     "id": 3,
