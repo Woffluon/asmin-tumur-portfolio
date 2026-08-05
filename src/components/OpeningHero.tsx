@@ -1,9 +1,31 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
+import heroCollection, { HeroCollectionItem } from '../heroCollection'
 import '../styles/OpeningHero.css'
 
 const OpeningHero = () => {
   const heroRef = useRef<HTMLElement>(null)
+
+  // Map slots to helper
+  const getSlot = (slotName: string): HeroCollectionItem => {
+    return (
+      heroCollection.find((item) => item.slot === slotName) || {
+        id: slotName,
+        slot: slotName,
+        title: "Fotoğraf",
+        category: "Portre",
+        img: "/medias/1.webp",
+      }
+    )
+  }
+
+  const left1 = getSlot("left_1")
+  const left2 = getSlot("left_2")
+  const left3 = getSlot("left_3")
+  const mainCenter = getSlot("main_center")
+  const right1 = getSlot("right_1")
+  const right2 = getSlot("right_2")
+  const right3 = getSlot("right_3")
 
   useEffect(() => {
     if (!heroRef.current) return
@@ -121,128 +143,76 @@ const OpeningHero = () => {
     }
   }, [])
 
+  const renderSideItem = (item: HeroCollectionItem) => (
+    <div className="item item-side" key={item.id}>
+      <div className="item-copy">
+        <div className="item-copy-wrapper">
+          <p>{item.title}</p>
+        </div>
+        <div className="item-copy-wrapper">
+          <p>({item.category})</p>
+        </div>
+      </div>
+      <div className="item-img">
+        <picture>
+          <source
+            type="image/avif"
+            srcSet={item.mobileImg?.replace('.webp', '.avif') + " 640w, " + item.tabletImg?.replace('.webp', '.avif') + " 1080w, " + item.img.replace('.webp', '.avif') + " 1920w"}
+            sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
+          />
+          <source
+            type="image/webp"
+            srcSet={(item.mobileImg || item.img) + " 640w, " + (item.tabletImg || item.img) + " 1080w, " + item.img + " 1920w"}
+            sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
+          />
+          <img
+            src={item.img}
+            alt={item.title}
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
+      </div>
+    </div>
+  )
+
   return (
     <section ref={heroRef} className="opening-hero">
       <div className="container">
         <div className="items">
+          {/* Left Column */}
           <div className="items-col">
-            <div className="item item-side">
-              <div className="item-copy">
-                <div className="item-copy-wrapper">
-                  <p>Güneş & Kıyı</p>
-                </div>
-                <div className="item-copy-wrapper">
-                  <p>(Portre)</p>
-                </div>
-              </div>
-              <div className="item-img">
-                <picture>
-                  <source
-                    type="image/avif"
-                    srcSet="/medias/4_mobile.avif 640w, /medias/4_tablet.avif 1080w, /medias/4.avif 1920w"
-                    sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
-                  />
-                  <source
-                    type="image/webp"
-                    srcSet="/medias/4_mobile.webp 640w, /medias/4_tablet.webp 1080w, /medias/4.webp 1920w"
-                    sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
-                  />
-                  <img
-                    src="/medias/4.webp"
-                    alt="Güneş ve Kıyı"
-                    loading="eager"
-                    decoding="async"
-                  />
-                </picture>
-              </div>
-            </div>
-            <div className="item item-side">
-              <div className="item-copy">
-                <div className="item-copy-wrapper">
-                  <p>Kentsel Duruş</p>
-                </div>
-                <div className="item-copy-wrapper">
-                  <p>(Moda)</p>
-                </div>
-              </div>
-              <div className="item-img">
-                <picture>
-                  <source
-                    type="image/avif"
-                    srcSet="/medias/2_mobile.avif 640w, /medias/2_tablet.avif 1080w, /medias/2.avif 1920w"
-                    sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
-                  />
-                  <source
-                    type="image/webp"
-                    srcSet="/medias/2_mobile.webp 640w, /medias/2_tablet.webp 1080w, /medias/2.webp 1920w"
-                    sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
-                  />
-                  <img
-                    src="/medias/2.webp"
-                    alt="Kentsel Duruş"
-                    loading="eager"
-                    decoding="async"
-                  />
-                </picture>
-              </div>
-            </div>
-            <div className="item item-side">
-              <div className="item-copy">
-                <div className="item-copy-wrapper">
-                  <p>Körfez Meltemi</p>
-                </div>
-                <div className="item-copy-wrapper">
-                  <p>(Yaşam)</p>
-                </div>
-              </div>
-              <div className="item-img">
-                <picture>
-                  <source
-                    type="image/avif"
-                    srcSet="/medias/3_mobile.avif 640w, /medias/3_tablet.avif 1080w, /medias/3.avif 1920w"
-                    sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
-                  />
-                  <source
-                    type="image/webp"
-                    srcSet="/medias/3_mobile.webp 640w, /medias/3_tablet.webp 1080w, /medias/3.webp 1920w"
-                    sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
-                  />
-                  <img
-                    src="/medias/3.webp"
-                    alt="Körfez Meltemi"
-                    loading="eager"
-                    decoding="async"
-                  />
-                </picture>
-              </div>
-            </div>
+            {renderSideItem(left1)}
+            {renderSideItem(left2)}
+            {renderSideItem(left3)}
           </div>
 
+          {/* Main Featured Center Column */}
           <div className="items-col">
             <div className="item-main">
               <div className="item-copy">
                 <div className="item-copy-wrapper">
-                  <p>Gece Portresi</p>
+                  <p>{mainCenter.title}</p>
                 </div>
                 <div className="item-copy-wrapper">
-                  <p>(Featured)</p>
+                  <p>({mainCenter.category})</p>
                 </div>
               </div>
               <div className="item-img">
                 <picture>
                   <source
                     type="image/avif"
-                    srcSet="/medias/1_mobile.avif 640w, /medias/1_tablet.avif 1080w, /medias/1.avif 1920w"
+                    srcSet={mainCenter.mobileImg?.replace('.webp', '.avif') + " 640w, " + mainCenter.tabletImg?.replace('.webp', '.avif') + " 1080w, " + mainCenter.img.replace('.webp', '.avif') + " 1920w"}
                     sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
                   />
                   <source
                     type="image/webp"
-                    srcSet="/medias/1_mobile.webp 640w, /medias/1_tablet.webp 1080w, /medias/1.webp 1920w"
+                    srcSet={(mainCenter.mobileImg || mainCenter.img) + " 640w, " + (mainCenter.tabletImg || mainCenter.img) + " 1080w, " + mainCenter.img + " 1920w"}
                     sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
                   />
                   <img
-                    src="/medias/1.webp"
-                    alt="Gece Portresi"
+                    src={mainCenter.img}
+                    alt={mainCenter.title}
                     loading="eager"
                     decoding="async"
                   />
@@ -251,97 +221,11 @@ const OpeningHero = () => {
             </div>
           </div>
 
+          {/* Right Column */}
           <div className="items-col">
-            <div className="item item-side">
-              <div className="item-copy">
-                <div className="item-copy-wrapper">
-                  <p>Sahne Işıkları</p>
-                </div>
-                <div className="item-copy-wrapper">
-                  <p>(Etkinlik)</p>
-                </div>
-              </div>
-              <div className="item-img">
-                <picture>
-                  <source
-                    type="image/avif"
-                    srcSet="/medias/5_mobile.avif 640w, /medias/5_tablet.avif 1080w, /medias/5.avif 1920w"
-                    sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
-                  />
-                  <source
-                    type="image/webp"
-                    srcSet="/medias/5_mobile.webp 640w, /medias/5_tablet.webp 1080w, /medias/5.webp 1920w"
-                    sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
-                  />
-                  <img
-                    src="/medias/5.webp"
-                    alt="Sahne Işıkları"
-                    loading="eager"
-                    decoding="async"
-                  />
-                </picture>
-              </div>
-            </div>
-            <div className="item item-side">
-              <div className="item-copy">
-                <div className="item-copy-wrapper">
-                  <p>Kutlama Sahnesi</p>
-                </div>
-                <div className="item-copy-wrapper">
-                  <p>(Tören)</p>
-                </div>
-              </div>
-              <div className="item-img">
-                <picture>
-                  <source
-                    type="image/avif"
-                    srcSet="/medias/6_mobile.avif 640w, /medias/6_tablet.avif 1080w, /medias/6.avif 1920w"
-                    sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
-                  />
-                  <source
-                    type="image/webp"
-                    srcSet="/medias/6_mobile.webp 640w, /medias/6_tablet.webp 1080w, /medias/6.webp 1920w"
-                    sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
-                  />
-                  <img
-                    src="/medias/6.webp"
-                    alt="Kutlama Sahnesi"
-                    loading="eager"
-                    decoding="async"
-                  />
-                </picture>
-              </div>
-            </div>
-            <div className="item item-side">
-              <div className="item-copy">
-                <div className="item-copy-wrapper">
-                  <p>Liman Kedisi</p>
-                </div>
-                <div className="item-copy-wrapper">
-                  <p>(Doğa)</p>
-                </div>
-              </div>
-              <div className="item-img">
-                <picture>
-                  <source
-                    type="image/avif"
-                    srcSet="/medias/7_mobile.avif 640w, /medias/7_tablet.avif 1080w, /medias/7.avif 1920w"
-                    sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
-                  />
-                  <source
-                    type="image/webp"
-                    srcSet="/medias/7_mobile.webp 640w, /medias/7_tablet.webp 1080w, /medias/7.webp 1920w"
-                    sizes="(max-width: 640px) 640px, (max-width: 1080px) 1080px, 1920px"
-                  />
-                  <img
-                    src="/medias/7.webp"
-                    alt="Liman Kedisi"
-                    loading="eager"
-                    decoding="async"
-                  />
-                </picture>
-              </div>
-            </div>
+            {renderSideItem(right1)}
+            {renderSideItem(right2)}
+            {renderSideItem(right3)}
           </div>
         </div>
 

@@ -1,0 +1,9 @@
+[
+  { "id": "hero_1", "slot": "left_1", "title": "Güneş & Kıyı", "category": "Portre", "img": "/medias/4.webp", "mobileImg": "/medias/4_mobile.webp", "tabletImg": "/medias/4_tablet.webp" },
+  { "id": "hero_2", "slot": "left_2", "title": "Kentsel Duruş", "category": "Moda", "img": "/medias/2.webp", "mobileImg": "/medias/2_mobile.webp", "tabletImg": "/medias/2_tablet.webp" },
+  { "id": "hero_3", "slot": "left_3", "title": "Körfez Meltemi", "category": "Yaşam", "img": "/medias/3.webp", "mobileImg": "/medias/3_mobile.webp", "tabletImg": "/medias/3_tablet.webp" },
+  { "id": "hero_4", "slot": "main_center", "title": "Gece Portresi", "category": "Featured", "img": "/medias/1.webp", "mobileImg": "/medias/1_mobile.webp", "tabletImg": "/medias/1_tablet.webp" },
+  { "id": "hero_5", "slot": "right_1", "title": "Sahne Işıkları", "category": "Etkinlik", "img": "/medias/5.webp", "mobileImg": "/medias/5_mobile.webp", "tabletImg": "/medias/5_tablet.webp" },
+  { "id": "hero_6", "slot": "right_2", "title": "Kutlama Sahnesi", "category": "Tören", "img": "/medias/6.webp", "mobileImg": "/medias/6_mobile.webp", "tabletImg": "/medias/6_tablet.webp" },
+  { "id": "hero_7", "slot": "right_3", "title": "Liman Kedisi", "category": "Doğa", "img": "/medias/7.webp", "mobileImg": "/medias/7_mobile.webp", "tabletImg": "/medias/7_tablet.webp" }
+]

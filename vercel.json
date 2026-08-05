@@ -3,7 +3,7 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/((?!assets/|photos/|fonts/|medias/|favicon.*|apple-touch-icon.png|icons.svg|robots.txt|sitemap.xml).*)",
+      "source": "/((?!api/|assets/|photos/|fonts/|medias/|favicon.*|apple-touch-icon.png|icons.svg|robots.txt|sitemap.xml).*)",
       "destination": "/index.html"
     }
   ],

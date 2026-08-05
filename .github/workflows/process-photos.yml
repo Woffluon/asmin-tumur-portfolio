@@ -1,0 +1,45 @@
+name: Process Raw Photos Pipeline
+
+on:
+  push:
+    paths:
+      - 'raw-medias/**'
+      - 'src/collection.json'
+      - 'src/heroCollection.json'
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  process-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9.15.4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Process Raw Photos with Sharp
+        run: pnpm run process-images
+
+      - name: Auto-Commit Processed Assets & Metadata
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(media): auto-generate sharp optimized webp/avif variants [skip ci]"
+          file_pattern: 'public/medias/* src/collection.json src/heroCollection.json'

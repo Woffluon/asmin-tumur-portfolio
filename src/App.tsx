@@ -6,6 +6,7 @@ import { AppErrorBoundary } from './components/AppErrorBoundary'
 import { PageLoader } from './components/PageLoader'
 
 const Gallery = lazy(() => import('./pages/Gallery'))
+const AdminPage = lazy(() => import('./pages/Admin'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/galeri" element={<Gallery />} />
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
